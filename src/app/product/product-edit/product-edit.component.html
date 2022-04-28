@@ -1,0 +1,30 @@
+<h1>chỉnh sửa sản phẩm</h1>
+<form [formGroup]="productForm" (ngSubmit)="editProduct()">
+  <div>
+    <label for="id">id sản phẩm</label> <br>
+    <input type="number" id="id" formControlName="id" disabled>
+    <p style="color: red" [hidden]="idControl.valid">Id is required</p>
+  </div>
+  <div>
+    <label for="name">name sản phẩm</label> <br>
+    <input type="text" id="name" formControlName="name">
+    <div  [hidden]="nameControl.valid || !nameControl.touched">
+      <div style="color:red" *ngIf="nameControl.errors?.required">Name is required</div>
+      <div style="color:red" *ngIf="nameControl.errors?.minlength">MinLength is 6</div>
+      <div style="color:red" *ngIf="nameControl.errors?.maxlength">Maxlength is 12</div>
+    </div>
+  </div>
+  <div>
+    <label for="price">giá sản phẩm</label> <br>
+    <input type="number" id="price" formControlName="price">
+    <p style="color: red" [hidden]="priceControl.valid">Id is required</p>
+
+  </div>
+  <div>
+    <label for="description">mô tả sản phẩm</label> <br>
+    <input type="text" id="description" formControlName="description">
+    <p style="color: red" [hidden]="descriptionControl.valid">Id is required</p>
+
+  </div>
+  <button>edit</button>
+</form>

@@ -1,0 +1,32 @@
+<h1>tạo mới sản phẩm</h1>
+<form [formGroup]="formCreateProduct" (ngSubmit)="createProduct(formCreateProduct)">
+  <div>
+    <label for="id">id sản phẩm</label> <br>
+    <input type="number" id="id" formControlName="id">
+    <p style="color: red" [hidden]="idCreateControl.valid || !idCreateControl.touched">id is required</p>
+  </div>
+  <div>
+    <label for="name">tên sản phẩm</label> <br>
+    <input type="text" id="name"
+           formControlName="name">
+    <div  [hidden]="nameCreateControl.valid || !nameCreateControl.touched">
+      <div style="color:red" *ngIf="nameCreateControl.errors?.required">Name is required</div>
+      <div style="color:red" *ngIf="nameCreateControl.errors?.minlength">MinLength is 6</div>
+      <div style="color:red" *ngIf="nameCreateControl.errors?.maxlength">Maxlength is 12</div>
+    </div>
+
+  </div>
+  <div>
+    <label for="price">giá sản phẩm</label> <br>
+    <input type="number" id="price" formControlName="price" >
+    <p style="color: red" [hidden]="priceCreateControl.valid || !priceCreateControl.touched">id is required</p>
+  </div>
+  <div>
+    <label for="description">mô tả sản phẩm</label> <br>
+    <input type="text" id="description" formControlName="description">
+    <p style="color: red" [hidden]="descriptionControl.valid || !descriptionControl.touched">id is required</p>
+  </div>
+  <button>submit</button>
+</form>
+<h3></h3>
+
